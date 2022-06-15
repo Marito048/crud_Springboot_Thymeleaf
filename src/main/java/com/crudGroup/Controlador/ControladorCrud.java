@@ -17,7 +17,7 @@ import com.crudGroup.Modelo.Usuario;
 import com.crudGroup.Modelo.UsuarioCrud;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class ControladorCrud {
     @Autowired
     private UsuarioCrud usuarioCrud;
@@ -25,22 +25,22 @@ public class ControladorCrud {
     @RequestMapping(value="", method=RequestMethod.GET)
     public String listaUsuarios(ModelMap mp) {
         mp.put("usuarios", usuarioCrud.findAll());
-        return "/lista";
+        return "/home/lista";
     }
 
     @RequestMapping(value="/nuevo", method=RequestMethod.GET)
     public String nuevo(ModelMap mp) {
         mp.put ("usuario", new Usuario());
-        return "/nuevo";
+        return "/home/nuevo";
     }
     @RequestMapping(value="/crear", method=RequestMethod.POST)
     public String crear(@Valid Usuario usuario, BindingResult bindingresult, ModelMap mp) {
         if (bindingresult.hasErrors()) {
-            return "/nuevo";
+            return "/home/nuevo";
         }else {
             usuarioCrud.save(usuario);
             mp.put("usuario", usuario);
-            return "/creado";
+            return "/home/creado";
         }
     }
 
@@ -48,20 +48,20 @@ public class ControladorCrud {
     
     @RequestMapping(value="/creado", method=RequestMethod.POST)
     public String creado(@RequestParam("usuario") Usuario usuario){
-        return "/creado";
+        return "/home/creado";
     
 
     }
     @RequestMapping(value="/editar/{id}", method=RequestMethod.GET)
 public String editar(@PathVariable("id") long id, ModelMap mp){
     mp.put("usuario", usuarioCrud.findById((int) id));
-    return "/editar";
+    return "/home/editar";
 }
 @RequestMapping(value="/actualizar", method=RequestMethod.POST)
 public String actualizar(@Valid Usuario usuario, BindingResult bindingResult, ModelMap mp){
     if(bindingResult.hasErrors()){
         mp.put("usuarios", usuarioCrud.findAll());
-    return "/lista";
+    return "/home/lista";
     }
     Optional<Usuario> usuarios = usuarioCrud.findById(usuario.getId()); 
     usuario.setNombre(usuario.getNombre());
@@ -69,14 +69,14 @@ public String actualizar(@Valid Usuario usuario, BindingResult bindingResult, Mo
     usuario.setEmail(usuario.getEmail());
     usuarioCrud.save(usuario);
     mp.put("usuario", usuario);
-    return "/actualizado";
+    return "/home/actualizado";
 }
  
 @RequestMapping(value="/borrar/{id}", method=RequestMethod.GET)
 public String borrar(@PathVariable("id") int id, ModelMap mp){
     usuarioCrud.deleteById (id);
     mp.put("usuarios", usuarioCrud.findAll());
-    return "/lista";
+    return "/home/lista";
 }
 
 

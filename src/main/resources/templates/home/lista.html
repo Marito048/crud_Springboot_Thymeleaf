@@ -31,11 +31,11 @@
                     <td data-th-text="${usuario.password}"></td>
                     <td data-th-text="${usuario.email}"></td>
                     <td>
-                        <a th:href="@{'/editar/{id}'(id=${usuario.id})}"><span class="fa-stack"> <i class="glyphicon glyphicon-edit"></i></span> 
+                        <a th:href="@{'/home/editar/{id}'(id=${usuario.id})}"><span class="fa-stack"> <i class="glyphicon glyphicon-edit"></i></span> 
                         </a>
                     </td>
                     <td>
-                        <a th:href="@{'/borrar/{id}'(id=${usuario.id})}">
+                        <a th:href="@{'/home/borrar/{id}'(id=${usuario.id})}">
                             <span class="fa-stack"> <i class="glyphicon glyphicon-trash"></i></span> 
                         </a>
                     </td>
@@ -46,7 +46,7 @@
 
     </div>
     <br>
-    <a class="btn btn-info" href="/nuevo">Nuevo Usuario</a>
+    <a class="btn btn-info" href="/home/nuevo">Nuevo Usuario</a>
 
 </body>
 </html>

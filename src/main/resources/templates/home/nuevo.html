@@ -4,26 +4,25 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Editar::Crud</title>
+    <title>Nuevo::Crud</title>
     
 </head>
 <body>
     <div class="page-header">
-        <h1>Editar Usuario</h1> 
+        <h1>Nuevo Usuario</h1> 
     </div>
-    <form action="#" th:action="@{/actualizar}" th:object="${usuario}" method="post">
-        <input type="hidden" id="id" name="id" th:field="*{id}"/>
+    <form action="#" th:action="@{/home/crear}" th:object="${usuario}" method="post">
         <div class="form-group">
             <label for="nombre" class="col-sm-2 control-label">Nombre</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="nombre" id="nombre" th:field="*{nombre}" required="required"/>
+                <input type="text" class="form-control" name="nombre" placeholder="tu nombre..." required="required"/>
                 <p typeth:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="alert alert-danger"/>
             </div>
         </div>
         <div class="form-group">
             <label for="password" class="col-sm-2 control-label">Apellido</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="password" id="password" th:field="*{password}" required="required"/>
+                <input type="text" class="form-control" name="password" placeholder="tu apellido..." required="required"/>
                 <p typeth:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"/>
             </div>
         </div>
@@ -31,14 +30,14 @@
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label"> Correo Electronico</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="email" id="email" th:field="*{email}" required="required"/>
+                <input type="email" class="form-control" name="email" id="email" placeholder="tu correo..." required="required"/>
                 <p typeth:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"/>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Modificar</button>
+                <button type="submit" class="btn btn-default">Crear</button>
             </div>
         </div>
     </form>
